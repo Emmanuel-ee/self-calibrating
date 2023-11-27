@@ -1,7 +1,6 @@
 const buttons = document.querySelectorAll(".buttons");
 
 const outputs = document.querySelectorAll(".output")
-let index = 0
 
 const yellowButton = document.getElementById("yellow");
 const ashButton = document.getElementById("ash");
@@ -21,6 +20,11 @@ let items = {
     8: {},
     9: {},
 };
+
+
+let index = 0
+highlightInputArea()
+
 
 let results = {};
 
@@ -57,6 +61,7 @@ function eliminateItems(color) {
         if(index < outputs.length){
             outputs[index].innerText = finalKey[0]
             index += 1
+            highlightInputArea()
             results = {}
         }else{
             refresh()
@@ -92,5 +97,9 @@ function setButtonColor(button, color) {
     const yellow = "#ffeb3b";
     const ash = "#b2beb5";
     button.style.backgroundColor = color === 0 ? yellow : ash;
+}
+
+function highlightInputArea(){
+    outputs[index].style.border = "5px solid black"
 }
 
