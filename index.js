@@ -62,7 +62,7 @@ function eliminateItems(color) {
         if (index > outputs.length - 1) {
             const resetButton = document.getElementsByClassName("display-buttons")[0].innerHTML = "<button onClick = refresh()>Reset</button>"
         }
-    } 
+    }
 
     shuffleColor()
     updateButtonColors()
@@ -129,7 +129,13 @@ function setButtonColor(button, color) {
 
 function highlightInputArea() {
     if (index < outputs.length) {
-        outputs[index].style.border = "5px solid black"
+        if (index === 0) {
+            outputs[index].style.border = "5px solid black"
+        } else {
+            outputs[index].style.border = "5px solid black"
+            outputs[index - 1].style.border = ""
+        }
+
     }
 
 }
