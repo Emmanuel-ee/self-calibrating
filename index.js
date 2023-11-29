@@ -58,9 +58,11 @@ function eliminateItems(color) {
             highlightInputArea()
             results = {}
         }
-    } else {
-        refresh()
-    }
+
+        if (index > outputs.length - 1) {
+            const resetButton = document.getElementsByClassName("display-buttons")[0].innerHTML = "<button onClick = refresh()>Reset</button>"
+        }
+    } 
 
     shuffleColor()
     updateButtonColors()
@@ -69,8 +71,8 @@ function eliminateItems(color) {
 
 
 function shuffleColor() {
+    const colors = [0, 1, 0, 1, 0, 1, 0, 1, 0, 1];
     if (Object.keys(results).length > 1) {
-        const colors = [0, 1, 0, 1, 0, 1, 0, 1, 0, 1];
         const resultColors = colors.slice(0, Object.keys(results).length)
         for (let i = resultColors.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -88,7 +90,7 @@ function shuffleColor() {
             const j = Math.floor(Math.random() * (i + 1));
             [remainingItems[i], remainingItems[j]] = [remainingItems[j], remainingItems[i]];
         }
-        
+
         let j = 0
         for (let key in items) {
             if (!results[key]) {
@@ -98,7 +100,6 @@ function shuffleColor() {
         }
 
     } else {
-        const colors = [0, 1, 0, 1, 0, 1, 0, 1, 0, 1];
         for (let i = colors.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [colors[i], colors[j]] = [colors[j], colors[i]];
