@@ -131,7 +131,7 @@ function highlightInputArea() {
     if (index < outputs.length) {
         if (index === 0) {
             outputs[index].style.border = "5px solid black"
-        } else if(index < outputs.length - 1){
+        } else if(index < outputs.length){
             outputs[index].style.border = "5px solid black"
             outputs[index - 1].style.border = ""
         }else {
